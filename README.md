@@ -2,16 +2,16 @@
 
 ## Setup
 - Create a MySQL database with two tables - Customer, Transaction.
-- Set the Schema name, Username and password [here]()
+- Set the Schema name, Username and password [here](https://github.com/kushalreddy95/RewardsAppBE/blob/main/src/main/resources/application.properties)
 - Customer Table consists of two columns: CUSTOMER_NAME Varchar(64), CUSTOMER_ID int
 - Transaction Table consists of four columns: CUSTOMER_ID int, TRANSACTION_ID int, TRANSACTION_DATE date, AMOUNT int
-- Export the CSV from [here]() to the tables
+- Import the SQL from [here](https://drive.google.com/drive/folders/1IIdJ7osPLPibIloNjO64QRjRLjjqduTk?usp=sharing) to the tables
 
 
 ### Adding Values into Database
 
 - Only transactions values from **01/10/2022 to 31/12/2022** will be displayed by front end app
-- If adding new Customer, Add it both in React app [here]() and backend database.
+- If adding new Customer, Add it both in React app [here](https://github.com/kushalreddy95/RewardsAppFE/blob/main/src/api/dataService.js) and backend database.
 
 ### Running the APP
 ```
