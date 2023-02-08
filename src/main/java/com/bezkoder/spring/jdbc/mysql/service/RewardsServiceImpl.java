@@ -3,6 +3,7 @@ package com.bezkoder.spring.jdbc.mysql.service;
 import com.bezkoder.spring.jdbc.mysql.constants.Constants;
 import com.bezkoder.spring.jdbc.mysql.entity.Transaction;
 import com.bezkoder.spring.jdbc.mysql.model.Rewards;
+import com.bezkoder.spring.jdbc.mysql.repository.CustomerRepository;
 import com.bezkoder.spring.jdbc.mysql.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class RewardsServiceImpl implements RewardsService {
 	
 	@Autowired
 	TransactionRepository transactionRepository;
+	@Autowired
+	CustomerRepository customerRepository;
 
 	public Rewards getRewardsByCustomerId(Long customerId) {
 
@@ -27,7 +30,7 @@ public class RewardsServiceImpl implements RewardsService {
 		Timestamp lastThirdMonthTimestamp = getDateBasedOnOffSetDays(3*Constants.daysInMonths);
 
 		List<Transaction> lastMonthTransactions = transactionRepository.findAllByCustomerIdAndTransactionDateBetween(
-				customerId, lastMonthTimestamp, Timestamp.from(Instant.now()));
+				customerId, lastMonthTimestamp, Timestamp.valueOf(LocalDateTime.of(2022,12,31,23,59)));
 		List<Transaction> lastSecondMonthTransactions = transactionRepository
 				.findAllByCustomerIdAndTransactionDateBetween(customerId, lastSecondMonthTimestamp, lastMonthTimestamp);
 		List<Transaction> lastThirdMonthTransactions = transactionRepository
@@ -54,7 +57,7 @@ public class RewardsServiceImpl implements RewardsService {
 				.collect(Collectors.summingLong(r -> r.longValue()));
 	}
 
-	private Long calculateRewards(Transaction t) {
+	public Long calculateRewards(Transaction t) {
 		if (t.getTransactionAmount() > Constants.firstRewardLimit && t.getTransactionAmount() <= Constants.secondRewardLimit) {
 			return Math.round(t.getTransactionAmount() - Constants.firstRewardLimit);
 		} else if (t.getTransactionAmount() > Constants.secondRewardLimit) {
@@ -66,7 +69,8 @@ public class RewardsServiceImpl implements RewardsService {
 	}
 
 	public Timestamp getDateBasedOnOffSetDays(int days) {
-		return Timestamp.valueOf(LocalDateTime.now().minusDays(days));
+
+		return Timestamp.valueOf(LocalDateTime.of(2022,12,31,23,59).minusDays(days));
 	}
 
 }

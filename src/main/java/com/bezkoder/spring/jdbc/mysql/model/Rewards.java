@@ -2,6 +2,7 @@ package com.bezkoder.spring.jdbc.mysql.model;
 
 public class Rewards {
     private long customerId;
+	private String customerName;
 	private long lastMonthRewardPoints;
     private long lastSecondMonthRewardPoints;
     private long lastThirdMonthRewardPoints;
@@ -10,6 +11,10 @@ public class Rewards {
     public long getCustomerId() {
         return customerId;
     }
+
+	public String getCustomerName() {
+		return customerName;
+	}
 
     public long getLastMonthRewardPoints() {
 		return lastMonthRewardPoints;
@@ -39,7 +44,9 @@ public class Rewards {
         this.customerId = customerId;
     }
 
-    
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
 
     public long getTotalRewards() {
         return totalRewards;

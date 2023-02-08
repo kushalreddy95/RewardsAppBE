@@ -13,4 +13,10 @@ public class Customer {
     @Column(name = "CUSTOMER_NAME")
     private String customerName;
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName (String customerName){ this.customerName = customerName; }
+
 }

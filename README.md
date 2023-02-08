@@ -1,4 +1,35 @@
-# Spring Boot JdbcTemplate example with MySQL: Build CRUD App
+# Rewards App - BackEnd
+
+## Setup
+- Create a MySQL database with two tables - Customer, Transaction.
+- Set the Schema name, Username and password [here]()
+- Customer Table consists of two columns: CUSTOMER_NAME Varchar(64), CUSTOMER_ID int
+- Transaction Table consists of four columns: CUSTOMER_ID int, TRANSACTION_ID int, TRANSACTION_DATE date, AMOUNT int
+- Export the CSV from [here]() to the tables
+
+
+### Adding Values into Database
+
+- Only transactions values from **01/10/2022 to 31/12/2022** will be displayed by front end app
+- If adding new Customer, Add it both in React app [here]() and backend database.
+
+### Running the APP
+```
+mvn spring-boot:run
+```
+The above line will instantiate a localhost server at port 8080. Test your API fucntionality by clicking [here](http://localhost:8080/api/1001/rewards)
+
+Now Run the Front End APP.
+
+### Running the Tests
+```
+mvn test
+```
+
+
+### More Resources
+
+#### Spring Boot JdbcTemplate example with MySQL: Build CRUD App
 Build a Spring Boot CRUD Rest API example that uses Spring Data Jdbc to make CRUD Operations with MySQL Database. You'll know:
 - How to configure Spring Data to work with MySQL database
 - How to define Data Models and Repository interfaces
@@ -49,9 +80,4 @@ Run both Back-end & Front-end in one place:
 > [Integrate React.js with Spring Boot Rest API](https://www.bezkoder.com/integrate-reactjs-spring-boot/)
 
 > [Integrate Vue.js with Spring Boot Rest API](https://www.bezkoder.com/integrate-vue-spring-boot/)
-
-## Run Spring Boot application
-```
-mvn spring-boot:run
-```
 

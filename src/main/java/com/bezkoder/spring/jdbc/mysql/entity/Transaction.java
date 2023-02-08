@@ -21,6 +21,7 @@ public class Transaction {
     private double transactionAmount;
 
 
+
     public Long getTransactionId() {
 		return transactionId;
 	}
